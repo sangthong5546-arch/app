@@ -16,27 +16,28 @@ An application to batch install multiple programs with a single click.
 
 ## 📦 โปรแกรมที่รองรับ (Supported Programs)
 
-### 🌐 Browsers (เว็บเบราว์เซอร์)
-- Google Chrome
-- Mozilla Firefox
-
-### 💻 Development (เครื่องมือพัฒนา)
-- Visual Studio Code
-- Git
-- Python 3
-- Node.js
-
-### 🎬 Media (สื่อ)
-- VLC Media Player
+รายการโปรแกรม 7 ตัวที่พร้อมติดตั้งบน **Windows 11**:
 
 ### 🛠️ Utilities (เครื่องมือ)
-- 7-Zip
+- **7-Zip** - โปรแกรมบีบอัดและแตกไฟล์
 
-### 📝 Productivity (ผลิตภาพ)
-- LibreOffice
+### 🖥️ Remote Access (การเข้าถึงระยะไกล)
+- **TightVNC** - โปรแกรมควบคุมคอมพิวเตอร์ระยะไกล
 
-### 💬 Communication (การสื่อสาร)
-- Discord
+### 📄 Document Viewers (โปรแกรมดูเอกสาร)
+- **Adobe Acrobat Reader DC** - โปรแกรมอ่านไฟล์ PDF
+
+### 🌐 Browsers (เว็บเบราว์เซอร์)
+- **Google Chrome Enterprise** - เว็บเบราว์เซอร์สำหรับองค์กร
+
+### 🖼️ Image Viewers (โปรแกรมดูรูปภาพ)
+- **FastStone Image Viewer** - โปรแกรมดูและแก้ไขรูปภาพ
+
+### 🖨️ Printer Drivers (ไดรเวอร์เครื่องพิมพ์)
+- **Kyocera M2040dn KX Driver** - ไดรเวอร์เครื่องพิมพ์ Kyocera (ต้องติดตั้งแบบ manual)
+
+### 📝 Office Suite (ชุดโปรแกรม Office)
+- **LibreOffice** - ชุดโปรแกรม Office โอเพนซอร์ส (Word, Excel, PowerPoint ทางเลือก)
 
 ## 🚀 วิธีใช้งาน (Usage)
 
@@ -110,6 +111,24 @@ python batch_installer_gui.py
 - Fedora: `sudo dnf install python3-tkinter`
 - macOS: มักจะมีมาอยู่แล้ว
 - Windows: มักจะมีมาอยู่แล้ว
+
+## ⚠️ โปรแกรมที่ต้องติดตั้งด้วยตนเอง (Manual Installation)
+
+บางโปรแกรมต้องดาวน์โหลดและติดตั้งด้วยตนเองเนื่องจาก URL เปลี่ยนแปลงบ่อย:
+
+### 🖨️ Kyocera M2040dn KX Driver
+เมื่อเลือกโปรแกรมนี้ ระบบจะแสดงคำแนะนำการติดตั้งแบบละเอียด:
+
+**ขั้นตอนสำหรับ Windows 11:**
+1. ไปที่เว็บไซต์ Kyocera Support: https://www.kyoceradocumentsolutions.com
+2. คลิก Support > Download Center
+3. ค้นหา 'ECOSYS M2040dn'
+4. เลือก Windows 10/11 64-bit
+5. ดาวน์โหลด 'KX Driver'
+6. รันไฟล์ติดตั้งและทำตามขั้นตอน
+7. เชื่อมต่อเครื่องพิมพ์ (USB หรือ Network)
+
+โปรแกรมอื่นๆ จะติดตั้งอัตโนมัติ!
 
 ## 📝 การเพิ่มโปรแกรมใหม่ (Adding New Programs)
 
@@ -205,8 +224,9 @@ python batch_installer_gui.py
 - requests library
 
 ### Windows
-- Windows 7 หรือสูงกว่า
+- **Windows 11** (แนะนำ) หรือ Windows 10
 - สิทธิ์ Administrator (สำหรับการติดตั้งโปรแกรม)
+- การเชื่อมต่ออินเทอร์เน็ต (สำหรับดาวน์โหลดโปรแกรม)
 
 ### Linux
 - Ubuntu/Debian-based หรือ distribution ที่รองรับ apt

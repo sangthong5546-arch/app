@@ -114,7 +114,10 @@ class ProgramInstaller:
         installer_type = platform_config.get('installer_type')
 
         try:
-            if installer_type == 'command':
+            if installer_type == 'manual':
+                # Manual installation - show instructions
+                return self._install_manual(program_name, platform_config)
+            elif installer_type == 'command':
                 # Execute command-based installation
                 return self._install_via_commands(program_name, platform_config)
             else:
@@ -124,6 +127,36 @@ class ProgramInstaller:
         except Exception as e:
             self._update_progress(f"Installation failed for {program_name}: {e}", 0)
             return False
+
+    def _install_manual(self, program_name: str, config: Dict) -> bool:
+        """Show manual installation instructions"""
+        self._update_progress(f"\n{'='*60}", 0)
+        self._update_progress(f"⚠️  {program_name} requires manual installation", 10)
+        self._update_progress(f"{'='*60}", 10)
+
+        # Show note if available
+        note = config.get('note')
+        if note:
+            self._update_progress(f"\n📌 หมายเหตุ: {note}", 20)
+
+        # Show manual steps if available
+        manual_steps = config.get('manual_steps')
+        if manual_steps:
+            self._update_progress(f"\n📋 ขั้นตอนการติดตั้ง:", 30)
+            for step in manual_steps:
+                self._update_progress(f"   {step}", 40)
+
+        # Show URL
+        url = config.get('url')
+        if url:
+            self._update_progress(f"\n🔗 ลิงก์ดาวน์โหลด: {url}", 50)
+
+        self._update_progress(f"\n{'='*60}", 60)
+        self._update_progress(f"กรุณาติดตั้งโปรแกรมนี้ด้วยตนเอง", 80)
+        self._update_progress(f"{'='*60}\n", 100)
+
+        # Return True to mark as "completed" (user needs to do it manually)
+        return True
 
     def _install_via_commands(self, program_name: str, config: Dict) -> bool:
         """Install program using system commands"""

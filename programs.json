@@ -1,12 +1,66 @@
 {
   "programs": [
     {
-      "id": "chrome",
-      "name": "Google Chrome",
-      "description": "เว็บเบราว์เซอร์ยอดนิยม",
+      "id": "7zip",
+      "name": "7-Zip",
+      "description": "โปรแกรมบีบอัดและแตกไฟล์",
+      "category": "Utilities",
+      "windows": {
+        "url": "https://www.7-zip.org/a/7z2408-x64.exe",
+        "installer_type": "exe",
+        "silent_args": "/S"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y p7zip-full p7zip-rar"
+        ]
+      }
+    },
+    {
+      "id": "tightvnc",
+      "name": "TightVNC",
+      "description": "โปรแกรมควบคุมคอมพิวเตอร์ระยะไกล",
+      "category": "Remote Access",
+      "windows": {
+        "url": "https://www.tightvnc.com/download/2.8.85/tightvnc-2.8.85-gpl-setup-64bit.msi",
+        "installer_type": "msi",
+        "silent_args": "/quiet /norestart"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y tightvncserver"
+        ]
+      }
+    },
+    {
+      "id": "adobe_reader",
+      "name": "Adobe Acrobat Reader DC",
+      "description": "โปรแกรมอ่านไฟล์ PDF",
+      "category": "Document Viewers",
+      "windows": {
+        "url": "https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/2300820555/AcroRdrDC2300820555_en_US.exe",
+        "installer_type": "exe",
+        "silent_args": "/sAll /rs /msi EULA_ACCEPT=YES"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y evince"
+        ]
+      }
+    },
+    {
+      "id": "chrome_enterprise",
+      "name": "Google Chrome Enterprise",
+      "description": "เว็บเบราว์เซอร์สำหรับองค์กร",
       "category": "Browsers",
       "windows": {
-        "url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
+        "url": "https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B00000000-0000-0000-0000-000000000000%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable-statsdef_1%26installdataindex%3Dempty/update2/installers/ChromeStandaloneSetup64.exe",
         "installer_type": "exe",
         "silent_args": "/silent /install"
       },
@@ -21,141 +75,71 @@
       }
     },
     {
-      "id": "firefox",
-      "name": "Mozilla Firefox",
-      "description": "เว็บเบราว์เซอร์โอเพนซอร์ส",
-      "category": "Browsers",
+      "id": "faststone",
+      "name": "FastStone Image Viewer",
+      "description": "โปรแกรมดูและแก้ไขรูปภาพ",
+      "category": "Image Viewers",
       "windows": {
-        "url": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US",
+        "url": "https://www.faststone.org/DN/FSViewerSetup75.exe",
         "installer_type": "exe",
-        "silent_args": "/S"
+        "silent_args": "/VERYSILENT /NORESTART /SP-",
+        "note": "FastStone Image Viewer 7.5 - รองรับ Windows 11"
       },
       "linux": {
         "installer_type": "command",
         "commands": [
           "sudo apt-get update",
-          "sudo apt-get install -y firefox"
-        ]
+          "sudo apt-get install -y gthumb"
+        ],
+        "note": "Linux ใช้ gThumb แทน FastStone"
       }
     },
     {
-      "id": "vscode",
-      "name": "Visual Studio Code",
-      "description": "โปรแกรมแก้ไขโค้ดยอดนิยม",
-      "category": "Development",
+      "id": "kyocera_m2040dn",
+      "name": "Kyocera M2040dn KX Driver",
+      "description": "ไดรเวอร์เครื่องพิมพ์ Kyocera M2040dn",
+      "category": "Printer Drivers",
       "windows": {
-        "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user",
-        "installer_type": "exe",
-        "silent_args": "/VERYSILENT /MERGETASKS=!runcode"
+        "url": "https://www.kyoceradocumentsolutions.com/en/support/downloads.html",
+        "installer_type": "manual",
+        "manual_steps": [
+          "1. ไปที่เว็บไซต์ Kyocera Support: https://www.kyoceradocumentsolutions.com",
+          "2. คลิก Support > Download Center",
+          "3. ค้นหา 'ECOSYS M2040dn'",
+          "4. เลือกระบบปฏิบัติการ (Windows 10/11 64-bit)",
+          "5. ดาวน์โหลด 'KX Driver' (ประมาณ 20-30 MB)",
+          "6. เปิดไฟล์ .exe ที่ดาวน์โหลดมา",
+          "7. ทำตามขั้นตอนการติดตั้ง (Next > Agree > Install)",
+          "8. เชื่อมต่อเครื่องพิมพ์ผ่าน USB หรือ Network",
+          "9. รีสตาร์ทเครื่องหากจำเป็น"
+        ],
+        "note": "ไดรเวอร์ Kyocera ต้องดาวน์โหลดจากเว็บไซต์โดยตรงเนื่องจาก URL เปลี่ยนแปลงบ่อย"
       },
       "linux": {
-        "installer_type": "command",
-        "commands": [
-          "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg",
-          "sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/",
-          "sudo sh -c 'echo \"deb [arch=amd64] https://packages.microsoft.com/repos/code stable main\" > /etc/apt/sources.list.d/vscode.list'",
-          "sudo apt-get update",
-          "sudo apt-get install -y code"
-        ]
-      }
-    },
-    {
-      "id": "git",
-      "name": "Git",
-      "description": "ระบบควบคุมเวอร์ชัน",
-      "category": "Development",
-      "windows": {
-        "url": "https://github.com/git-for-windows/git/releases/download/v2.42.0.windows.2/Git-2.42.0.2-64-bit.exe",
-        "installer_type": "exe",
-        "silent_args": "/VERYSILENT /NORESTART"
-      },
-      "linux": {
-        "installer_type": "command",
-        "commands": [
-          "sudo apt-get update",
-          "sudo apt-get install -y git"
-        ]
-      }
-    },
-    {
-      "id": "python",
-      "name": "Python 3",
-      "description": "ภาษาโปรแกรมมิ่ง Python",
-      "category": "Development",
-      "windows": {
-        "url": "https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe",
-        "installer_type": "exe",
-        "silent_args": "/quiet InstallAllUsers=1 PrependPath=1"
-      },
-      "linux": {
-        "installer_type": "command",
-        "commands": [
-          "sudo apt-get update",
-          "sudo apt-get install -y python3 python3-pip"
-        ]
-      }
-    },
-    {
-      "id": "nodejs",
-      "name": "Node.js",
-      "description": "JavaScript Runtime",
-      "category": "Development",
-      "windows": {
-        "url": "https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi",
-        "installer_type": "msi",
-        "silent_args": "/quiet /norestart"
-      },
-      "linux": {
-        "installer_type": "command",
-        "commands": [
-          "curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -",
-          "sudo apt-get install -y nodejs"
-        ]
-      }
-    },
-    {
-      "id": "vlc",
-      "name": "VLC Media Player",
-      "description": "โปรแกรมเล่นวิดีโอและเพลง",
-      "category": "Media",
-      "windows": {
-        "url": "https://get.videolan.org/vlc/last/win64/vlc-3.0.18-win64.exe",
-        "installer_type": "exe",
-        "silent_args": "/L=1033 /S"
-      },
-      "linux": {
-        "installer_type": "command",
-        "commands": [
-          "sudo apt-get update",
-          "sudo apt-get install -y vlc"
-        ]
-      }
-    },
-    {
-      "id": "7zip",
-      "name": "7-Zip",
-      "description": "โปรแกรมบีบอัดไฟล์",
-      "category": "Utilities",
-      "windows": {
-        "url": "https://www.7-zip.org/a/7z2301-x64.exe",
-        "installer_type": "exe",
-        "silent_args": "/S"
-      },
-      "linux": {
-        "installer_type": "command",
-        "commands": [
-          "sudo apt-get update",
-          "sudo apt-get install -y p7zip-full p7zip-rar"
-        ]
+        "url": "https://www.kyoceradocumentsolutions.com/en/support/downloads.html",
+        "installer_type": "manual",
+        "manual_steps": [
+          "1. ไปที่เว็บไซต์ Kyocera Support: https://www.kyoceradocumentsolutions.com",
+          "2. คลิก Support > Download Center",
+          "3. ค้นหา 'ECOSYS M2040dn'",
+          "4. เลือกระบบปฏิบัติการ Linux",
+          "5. ดาวน์โหลด Linux Driver Package (.tar.gz)",
+          "6. แตกไฟล์: tar -xzf [filename].tar.gz",
+          "7. เข้าไปในโฟลเดอร์: cd [foldername]",
+          "8. รันสคริปต์ติดตั้ง: sudo ./install.sh",
+          "9. ตั้งค่าเครื่องพิมพ์ผ่าน CUPS: http://localhost:631",
+          "10. เพิ่มเครื่องพิมพ์และเลือกไดรเวอร์ Kyocera M2040dn"
+        ],
+        "note": "ต้องดาวน์โหลดไดรเวอร์ Linux Package จากเว็บไซต์ Kyocera เนื่องจากไม่มีใน repository"
       }
     },
     {
       "id": "libreoffice",
       "name": "LibreOffice",
       "description": "ชุดโปรแกรม Office โอเพนซอร์ส",
-      "category": "Productivity",
+      "category": "Office Suite",
       "windows": {
-        "url": "https://download.documentfoundation.org/libreoffice/stable/7.6.2/win/x86_64/LibreOffice_7.6.2_Win_x64.msi",
+        "url": "https://download.documentfoundation.org/libreoffice/stable/24.8.3/win/x86_64/LibreOffice_24.8.3_Win_x86-64.msi",
         "installer_type": "msi",
         "silent_args": "/quiet /norestart"
       },
@@ -164,25 +148,6 @@
         "commands": [
           "sudo apt-get update",
           "sudo apt-get install -y libreoffice"
-        ]
-      }
-    },
-    {
-      "id": "discord",
-      "name": "Discord",
-      "description": "แอพแชทและคอมมิวนิตี้",
-      "category": "Communication",
-      "windows": {
-        "url": "https://discord.com/api/download?platform=win",
-        "installer_type": "exe",
-        "silent_args": "-s"
-      },
-      "linux": {
-        "installer_type": "command",
-        "commands": [
-          "wget -O discord.deb 'https://discord.com/api/download?platform=linux&format=deb'",
-          "sudo apt-get install -y ./discord.deb",
-          "rm discord.deb"
         ]
       }
     }

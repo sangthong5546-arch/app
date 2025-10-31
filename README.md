@@ -46,18 +46,33 @@ An application to batch install multiple programs with a single click.
 pip install -r requirements.txt
 ```
 
-### วิธีที่ 1: ใช้ GUI (แนะนำสำหรับผู้ใช้ทั่วไป)
+### เริ่มใช้งาน (แนะนำ)
 
 ```bash
-python batch_installer_gui.py
+python run.py
 ```
 
+โปรแกรมจะแสดงตัวเลือก 3 แบบ:
+
+### วิธีที่ 1: ใช้ Web UI (🌟 แนะนำ - ใช้งานง่ายที่สุด)
+
+```bash
+python batch_installer_web.py
+```
+
+**คุณสมบัติ:**
+- 🌐 เปิดผ่าน Web Browser อัตโนมัติ
+- 🎨 หน้าตาสวยงาม ใช้งานง่าย
+- 📊 แสดงความคืบหน้าแบบ real-time
+- ✅ ไม่ต้องติดตั้ง tkinter
+- 💻 ใช้งานได้ทุก OS ที่มี Python
+
 **ขั้นตอน:**
-1. เปิดแอปพลิเคชัน
+1. รันคำสั่ง - Browser จะเปิดอัตโนมัติที่ http://localhost:8080
 2. เลือกโปรแกรมที่ต้องการติดตั้ง (คลิก checkbox)
 3. คลิกปุ่ม "🚀 ติดตั้งโปรแกรมที่เลือก"
 4. ยืนยันการติดตั้ง
-5. รอให้การติดตั้งเสร็จสิ้น
+5. รอให้การติดตั้งเสร็จ - ดูสถานะได้แบบ real-time
 
 **ปุ่มควบคุม:**
 - **✓ เลือกทั้งหมด** - เลือกทุกโปรแกรมที่รองรับ
@@ -83,6 +98,18 @@ python batch_installer_cli.py
 เลือก: 1 3 5-8 10      # เลือกโปรแกรม 1, 3, 5-8, และ 10
 เลือก: all             # เลือกทั้งหมด
 ```
+
+### วิธีที่ 3: ใช้ GUI (Tkinter) - ต้องติดตั้ง tkinter ก่อน
+
+```bash
+python batch_installer_gui.py
+```
+
+**หมายเหตุ:** ต้องติดตั้ง tkinter ก่อน:
+- Ubuntu/Debian: `sudo apt-get install python3-tk`
+- Fedora: `sudo dnf install python3-tkinter`
+- macOS: มักจะมีมาอยู่แล้ว
+- Windows: มักจะมีมาอยู่แล้ว
 
 ## 📝 การเพิ่มโปรแกรมใหม่ (Adding New Programs)
 
@@ -193,14 +220,16 @@ python batch_installer_cli.py
 
 ```
 batch-installer/
-├── README.md                 # เอกสารนี้
-├── requirements.txt          # Python dependencies
-├── programs.json            # รายการโปรแกรมที่รองรับ
-├── installer.py             # Core installer logic
-├── batch_installer_gui.py   # GUI application
-├── batch_installer_cli.py   # CLI application
-├── .gitignore              # Git ignore rules
-└── temp/                   # Temporary download folder (auto-created)
+├── README.md                  # เอกสารนี้
+├── requirements.txt           # Python dependencies
+├── programs.json             # รายการโปรแกรมที่รองรับ
+├── installer.py              # Core installer logic
+├── run.py                    # Main launcher (เลือก UI mode)
+├── batch_installer_web.py    # Web UI (แนะนำ) ⭐
+├── batch_installer_cli.py    # CLI application
+├── batch_installer_gui.py    # Tkinter GUI application
+├── .gitignore               # Git ignore rules
+└── temp/                    # Temporary download folder (auto-created)
 ```
 
 ## 🔒 ความปลอดภัย (Security)
@@ -212,23 +241,53 @@ batch-installer/
 
 ## 🐛 การแก้ไขปัญหา (Troubleshooting)
 
-### ปัญหา: โปรแกรมติดตั้งไม่สำเร็จ
-- ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต
-- ตรวจสอบสิทธิ์ Administrator/sudo
-- ดู log ในหน้าต่างสถานะ
+### ปัญหา: เลือกโปรแกรมแล้วไม่รัน / GUI ไม่เปิด
+**แก้ไข:** ใช้ **Web UI** แทน - ไม่ต้องติดตั้งอะไรเพิ่ม!
+```bash
+python batch_installer_web.py
+```
+หรือใช้ CLI:
+```bash
+python batch_installer_cli.py
+```
 
-### ปัญหา: GUI ไม่เปิด
-- ตรวจสอบว่าติดตั้ง tkinter แล้ว: `python -m tkinter`
-- ใช้ CLI version แทน
+### ปัญหา: ไม่มี tkinter (ModuleNotFoundError: No module named 'tkinter')
+**แก้ไข:** ติดตั้ง tkinter หรือใช้ Web UI แทน
+```bash
+# Ubuntu/Debian
+sudo apt-get install python3-tk
+
+# Fedora
+sudo dnf install python3-tkinter
+
+# หรือใช้ Web UI (แนะนำ)
+python batch_installer_web.py
+```
+
+### ปัญหา: โปรแกรมติดตั้งไม่สำเร็จ
+- ✅ ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต
+- ✅ ตรวจสอบสิทธิ์ Administrator/sudo
+- ✅ ดู log ในหน้าต่างสถานะ
+- ✅ ลองติดตั้งทีละโปรแกรม
 
 ### ปัญหา: Download ล้มเหลว
-- ตรวจสอบ firewall/antivirus
-- ตรวจสอบว่า URL ยังใช้งานได้
-- ดาวน์โหลดด้วยตนเองและวางในโฟลเดอร์ temp/
+- ✅ ตรวจสอบ firewall/antivirus
+- ✅ ตรวจสอบว่า URL ยังใช้งานได้
+- ✅ ดาวน์โหลดด้วยตนเองและวางในโฟลเดอร์ temp/
 
 ### ปัญหา: Linux - Permission denied
-- ใช้ sudo: `sudo python batch_installer_cli.py`
-- หรือให้สิทธิ์: `chmod +x batch_installer_cli.py`
+```bash
+# วิธีที่ 1: ใช้ sudo
+sudo python3 batch_installer_web.py
+
+# วิธีที่ 2: ให้สิทธิ์
+chmod +x *.py
+python3 batch_installer_web.py
+```
+
+### ปัญหา: Web UI ไม่เปิด Browser
+- เปิด browser ด้วยตนเอง ไปที่: http://localhost:8080
+- เปลี่ยน port ถ้าซ้ำ: แก้ไขในไฟล์ `batch_installer_web.py`
 
 ## 🤝 การมีส่วนร่วม (Contributing)
 

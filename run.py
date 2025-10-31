@@ -1,40 +1,91 @@
 #!/usr/bin/env python3
 """
 Batch Installer Launcher
-เลือกเปิดแบบ GUI หรือ CLI
+เลือกเปิดแบบ GUI, Web UI หรือ CLI
 """
 import sys
 import subprocess
 
 
+def check_tkinter():
+    """Check if tkinter is available"""
+    try:
+        import tkinter
+        return True
+    except ImportError:
+        return False
+
+
 def main():
     """Main launcher"""
+    has_tkinter = check_tkinter()
+
     print("=" * 60)
     print(" 🚀 Batch Installer - ติดตั้งโปรแกรมรวมกัน")
     print("=" * 60)
     print()
     print("เลือกโหมดการใช้งาน:")
-    print("  1. GUI (แนะนำ) - อินเทอร์เฟสแบบกราฟิก")
-    print("  2. CLI - อินเทอร์เฟสแบบ Command Line")
-    print("  3. ยกเลิก")
+
+    options = []
+    option_num = 1
+
+    # Web UI (always available)
+    print(f"  {option_num}. Web UI (แนะนำ) - เปิดผ่าน Browser")
+    options.append(('web', option_num))
+    option_num += 1
+
+    # CLI (always available)
+    print(f"  {option_num}. CLI - อินเทอร์เฟสแบบ Command Line")
+    options.append(('cli', option_num))
+    option_num += 1
+
+    # Tkinter GUI (only if available)
+    if has_tkinter:
+        print(f"  {option_num}. GUI (Tkinter) - อินเทอร์เฟสแบบกราฟิก")
+        options.append(('gui', option_num))
+        option_num += 1
+
+    print(f"  {option_num}. ยกเลิก")
+    exit_option = option_num
     print()
 
     while True:
-        choice = input("เลือก (1-3): ").strip()
+        try:
+            choice = input(f"เลือก (1-{option_num}): ").strip()
+            choice_num = int(choice)
 
-        if choice == '1':
-            print("\n🚀 เปิด GUI...")
-            subprocess.run([sys.executable, "batch_installer_gui.py"])
+            if choice_num == exit_option:
+                print("\n👋 ขอบคุณที่ใช้งาน!")
+                break
+
+            # Find selected option
+            selected = None
+            for opt_type, opt_num in options:
+                if opt_num == choice_num:
+                    selected = opt_type
+                    break
+
+            if selected == 'web':
+                print("\n🌐 เปิด Web UI...")
+                print("Browser จะเปิดอัตโนมัติใน 1 วินาที")
+                subprocess.run([sys.executable, "batch_installer_web.py"])
+                break
+            elif selected == 'cli':
+                print("\n🚀 เปิด CLI...")
+                subprocess.run([sys.executable, "batch_installer_cli.py"])
+                break
+            elif selected == 'gui':
+                print("\n🚀 เปิด GUI...")
+                subprocess.run([sys.executable, "batch_installer_gui.py"])
+                break
+            else:
+                print(f"❌ กรุณาเลือก 1-{option_num}")
+
+        except ValueError:
+            print(f"❌ กรุณากรอกตัวเลข 1-{option_num}")
+        except KeyboardInterrupt:
+            print("\n\n👋 ขอบคุณที่ใช้งาน!")
             break
-        elif choice == '2':
-            print("\n🚀 เปิด CLI...")
-            subprocess.run([sys.executable, "batch_installer_cli.py"])
-            break
-        elif choice == '3':
-            print("\n👋 ขอบคุณที่ใช้งาน!")
-            break
-        else:
-            print("❌ กรุณาเลือก 1, 2, หรือ 3")
 
 
 if __name__ == "__main__":

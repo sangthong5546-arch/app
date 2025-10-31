@@ -4,6 +4,12 @@
 
 An application to batch install multiple programs with a single click.
 
+## 📖 คู่มือเฉพาะระบบปฏิบัติการ
+
+- 🪟 **Windows 11 Users:** อ่าน [README-WINDOWS.md](README-WINDOWS.md) - คู่มือฉบับภาษาไทยสำหรับ Windows โดยเฉพาะ
+- 🐍 **ต้องติดตั้ง Python?** อ่าน [INSTALL-PYTHON.md](INSTALL-PYTHON.md) - วิธีติดตั้ง Python บน Windows 11
+- 📚 **คู่มือทั่วไป:** อ่านต่อด้านล่าง
+
 ## ✨ คุณสมบัติ (Features)
 
 - ✅ **ติดตั้งพร้อมกัน** - เลือกและติดตั้งหลายโปรแกรมด้วยคลิกเดียว

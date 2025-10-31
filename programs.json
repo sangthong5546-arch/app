@@ -1,0 +1,190 @@
+{
+  "programs": [
+    {
+      "id": "chrome",
+      "name": "Google Chrome",
+      "description": "เว็บเบราว์เซอร์ยอดนิยม",
+      "category": "Browsers",
+      "windows": {
+        "url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
+        "installer_type": "exe",
+        "silent_args": "/silent /install"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -",
+          "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'",
+          "sudo apt-get update",
+          "sudo apt-get install -y google-chrome-stable"
+        ]
+      }
+    },
+    {
+      "id": "firefox",
+      "name": "Mozilla Firefox",
+      "description": "เว็บเบราว์เซอร์โอเพนซอร์ส",
+      "category": "Browsers",
+      "windows": {
+        "url": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US",
+        "installer_type": "exe",
+        "silent_args": "/S"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y firefox"
+        ]
+      }
+    },
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "description": "โปรแกรมแก้ไขโค้ดยอดนิยม",
+      "category": "Development",
+      "windows": {
+        "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user",
+        "installer_type": "exe",
+        "silent_args": "/VERYSILENT /MERGETASKS=!runcode"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg",
+          "sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/",
+          "sudo sh -c 'echo \"deb [arch=amd64] https://packages.microsoft.com/repos/code stable main\" > /etc/apt/sources.list.d/vscode.list'",
+          "sudo apt-get update",
+          "sudo apt-get install -y code"
+        ]
+      }
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "description": "ระบบควบคุมเวอร์ชัน",
+      "category": "Development",
+      "windows": {
+        "url": "https://github.com/git-for-windows/git/releases/download/v2.42.0.windows.2/Git-2.42.0.2-64-bit.exe",
+        "installer_type": "exe",
+        "silent_args": "/VERYSILENT /NORESTART"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y git"
+        ]
+      }
+    },
+    {
+      "id": "python",
+      "name": "Python 3",
+      "description": "ภาษาโปรแกรมมิ่ง Python",
+      "category": "Development",
+      "windows": {
+        "url": "https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe",
+        "installer_type": "exe",
+        "silent_args": "/quiet InstallAllUsers=1 PrependPath=1"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y python3 python3-pip"
+        ]
+      }
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "description": "JavaScript Runtime",
+      "category": "Development",
+      "windows": {
+        "url": "https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi",
+        "installer_type": "msi",
+        "silent_args": "/quiet /norestart"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -",
+          "sudo apt-get install -y nodejs"
+        ]
+      }
+    },
+    {
+      "id": "vlc",
+      "name": "VLC Media Player",
+      "description": "โปรแกรมเล่นวิดีโอและเพลง",
+      "category": "Media",
+      "windows": {
+        "url": "https://get.videolan.org/vlc/last/win64/vlc-3.0.18-win64.exe",
+        "installer_type": "exe",
+        "silent_args": "/L=1033 /S"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y vlc"
+        ]
+      }
+    },
+    {
+      "id": "7zip",
+      "name": "7-Zip",
+      "description": "โปรแกรมบีบอัดไฟล์",
+      "category": "Utilities",
+      "windows": {
+        "url": "https://www.7-zip.org/a/7z2301-x64.exe",
+        "installer_type": "exe",
+        "silent_args": "/S"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y p7zip-full p7zip-rar"
+        ]
+      }
+    },
+    {
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "description": "ชุดโปรแกรม Office โอเพนซอร์ส",
+      "category": "Productivity",
+      "windows": {
+        "url": "https://download.documentfoundation.org/libreoffice/stable/7.6.2/win/x86_64/LibreOffice_7.6.2_Win_x64.msi",
+        "installer_type": "msi",
+        "silent_args": "/quiet /norestart"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "sudo apt-get update",
+          "sudo apt-get install -y libreoffice"
+        ]
+      }
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "description": "แอพแชทและคอมมิวนิตี้",
+      "category": "Communication",
+      "windows": {
+        "url": "https://discord.com/api/download?platform=win",
+        "installer_type": "exe",
+        "silent_args": "-s"
+      },
+      "linux": {
+        "installer_type": "command",
+        "commands": [
+          "wget -O discord.deb 'https://discord.com/api/download?platform=linux&format=deb'",
+          "sudo apt-get install -y ./discord.deb",
+          "rm discord.deb"
+        ]
+      }
+    }
+  ]
+}

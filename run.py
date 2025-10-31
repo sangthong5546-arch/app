@@ -68,15 +68,31 @@ def main():
             if selected == 'web':
                 print("\n🌐 เปิด Web UI...")
                 print("Browser จะเปิดอัตโนมัติใน 1 วินาที")
+                print("กด Ctrl+C ในหน้าต่างนี้เพื่อหยุด Web Server")
+                print("=" * 60)
                 subprocess.run([sys.executable, "batch_installer_web.py"])
+                print("\n" + "=" * 60)
+                print("✓ โปรแกรมจบการทำงานแล้ว")
+                print("=" * 60)
+                input("\nกด Enter เพื่อปิดหน้าต่าง...")
                 break
             elif selected == 'cli':
                 print("\n🚀 เปิด CLI...")
+                print("=" * 60)
                 subprocess.run([sys.executable, "batch_installer_cli.py"])
+                print("\n" + "=" * 60)
+                print("✓ โปรแกรมจบการทำงานแล้ว")
+                print("=" * 60)
+                input("\nกด Enter เพื่อปิดหน้าต่าง...")
                 break
             elif selected == 'gui':
                 print("\n🚀 เปิด GUI...")
+                print("=" * 60)
                 subprocess.run([sys.executable, "batch_installer_gui.py"])
+                print("\n" + "=" * 60)
+                print("✓ โปรแกรมจบการทำงานแล้ว")
+                print("=" * 60)
+                input("\nกด Enter เพื่อปิดหน้าต่าง...")
                 break
             else:
                 print(f"❌ กรุณาเลือก 1-{option_num}")

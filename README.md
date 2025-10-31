@@ -47,13 +47,28 @@ An application to batch install multiple programs with a single click.
 pip install -r requirements.txt
 ```
 
-### เริ่มใช้งาน (แนะนำ)
+### เริ่มใช้งาน
 
+#### 🪟 สำหรับ Windows (แนะนำ - ง่ายที่สุด!)
+
+**วิธีที่ 1: Double-click ไฟล์ .bat (ไม่ต้องพิมพ์คำสั่ง)**
+- **`start-web.bat`** - เปิด Web UI โดยตรง (🌟 แนะนำที่สุด!)
+- **`start.bat`** - เปิดเมนูเลือก UI (Web/CLI/GUI)
+
+**วิธีที่ 2: ใช้ Command Prompt/PowerShell**
 ```bash
 python run.py
 ```
 
-โปรแกรมจะแสดงตัวเลือก 3 แบบ:
+#### 🐧 สำหรับ Linux/macOS
+
+```bash
+python3 run.py
+```
+
+---
+
+โปรแกรมจะแสดงตัวเลือก UI ให้เลือก:
 
 ### วิธีที่ 1: ใช้ Web UI (🌟 แนะนำ - ใช้งานง่ายที่สุด)
 
@@ -242,12 +257,19 @@ python batch_installer_gui.py
 batch-installer/
 ├── README.md                  # เอกสารนี้
 ├── requirements.txt           # Python dependencies
-├── programs.json             # รายการโปรแกรมที่รองรับ
+├── programs.json             # รายการโปรแกรม 7 ตัวสำหรับ Windows 11
 ├── installer.py              # Core installer logic
 ├── run.py                    # Main launcher (เลือก UI mode)
-├── batch_installer_web.py    # Web UI (แนะนำ) ⭐
-├── batch_installer_cli.py    # CLI application
-├── batch_installer_gui.py    # Tkinter GUI application
+│
+├── 🪟 Windows Batch Files (Double-click to run)
+│   ├── start-web.bat         # เปิด Web UI โดยตรง ⭐
+│   └── start.bat             # เปิดเมนูเลือก UI
+│
+├── 🌐 UI Applications
+│   ├── batch_installer_web.py    # Web UI (แนะนำ) ⭐
+│   ├── batch_installer_cli.py    # CLI application
+│   └── batch_installer_gui.py    # Tkinter GUI application
+│
 ├── .gitignore               # Git ignore rules
 └── temp/                    # Temporary download folder (auto-created)
 ```
@@ -261,9 +283,26 @@ batch-installer/
 
 ## 🐛 การแก้ไขปัญหา (Troubleshooting)
 
+### ปัญหา: เลือกเมนูแล้วหน้าต่าง CLI หายไป (Windows)
+**แก้ไข:** ใช้ไฟล์ .bat แทน - จะไม่ปิดหน้าต่างอัตโนมัติ
+
+**วิธีแก้:**
+1. Double-click `start-web.bat` (แนะนำ) หรือ
+2. Double-click `start.bat` เพื่อเลือกเมนู
+
+**หรือรันผ่าน CMD:**
+```bash
+python run.py
+# หน้าต่างจะไม่ปิดจนกว่าคุณจะกด Enter
+```
+
 ### ปัญหา: เลือกโปรแกรมแล้วไม่รัน / GUI ไม่เปิด
 **แก้ไข:** ใช้ **Web UI** แทน - ไม่ต้องติดตั้งอะไรเพิ่ม!
 ```bash
+# Windows
+start-web.bat
+
+# หรือใช้ Python โดยตรง
 python batch_installer_web.py
 ```
 หรือใช้ CLI:

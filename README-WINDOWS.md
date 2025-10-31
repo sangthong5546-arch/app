@@ -124,13 +124,31 @@ Settings > Apps > App execution aliases
 ปิด (OFF): App Installer python.exe
 ```
 
-### 2. หน้าต่างปิดทันที
+### 2. PyPI Timeout / อินเทอร์เน็ตช้า ⚠️ **ปัญหาใหม่!**
+
+**อาการ:**
+```
+WARNING: Retrying...Connection to pypi.org timed out
+```
+
+**วิธีแก้แบบเร็ว:**
+```cmd
+REM วิธีที่ 1: ใช้สคริปต์แก้ปัญหา (ง่ายที่สุด!)
+install-dependencies.bat
+
+REM วิธีที่ 2: ใช้ Mirror เอเชีย (เร็วกว่า)
+python -m pip install -i https://mirrors.aliyun.com/pypi/simple/ requests
+```
+
+**📖 อ่านคู่มือละเอียด:** `FIX-SLOW-INTERNET.md`
+
+### 3. หน้าต่างปิดทันที
 
 **วิธีแก้:**
 - ใช้ไฟล์ .bat แทนการรัน python โดยตรง
 - ไฟล์ .bat จะรอให้กด Enter ก่อนปิด
 
-### 3. ไฟล์ติดตั้งดาวน์โหลดไม่ได้
+### 4. ไฟล์ติดตั้งดาวน์โหลดไม่ได้
 
 **วิธีแก้:**
 ```

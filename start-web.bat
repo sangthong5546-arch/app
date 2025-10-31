@@ -50,14 +50,25 @@ echo Checking dependencies...
 if errorlevel 1 (
     echo.
     echo [INFO] Installing required packages...
+    echo This may take a few moments...
     echo.
-    %PYTHON_CMD% -m pip install -r requirements.txt
+
+    REM Try with increased timeout first
+    %PYTHON_CMD% -m pip install --timeout 60 requests >nul 2>&1
     if errorlevel 1 (
-        echo.
-        echo [ERROR] Failed to install dependencies
-        echo.
-        pause
-        exit /b 1
+        echo [WARN] PyPI.org is slow, trying Asia mirror...
+        REM Try Aliyun mirror (faster for Asia/Thailand)
+        %PYTHON_CMD% -m pip install -i https://mirrors.aliyun.com/pypi/simple/ requests >nul 2>&1
+        if errorlevel 1 (
+            echo.
+            echo [ERROR] Failed to install dependencies
+            echo.
+            echo Please run: install-dependencies.bat
+            echo Or check your internet connection
+            echo.
+            pause
+            exit /b 1
+        )
     )
     echo [OK] Dependencies installed
     echo.
